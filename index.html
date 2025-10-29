@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">  <link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estyle.css">
+</head>
+<body>
+
+    <h1>TARIFA DE TRANSPORTE</h1>
+
+      <script>
+    // Solicitar datos al usuario
+    let nombre = prompt("Digite su nombre: ");
+    let tipoTransporte = parseInt(prompt("Seleccione el tipo de transporte:\n1 = Bus Urbano\n2 = Metro\n3 = Tren intermunicipal"));
+    let condicion = parseInt(prompt("Seleccione su condición especial:\n1 = Estudiante\n2 = Adulto mayor\n3 = Ninguna"));
+
+    let tarifaBase;
+    let descuento = 0;
+
+    // Determinar tarifa base según el tipo de transporte
+    switch (tipoTransporte) {
+      case 1:
+        tarifaBase = 2500;
+        break;
+      case 2:
+        tarifaBase = 3200;
+        break;
+      case 3:
+        tarifaBase = 10000;
+        break;
+      default:
+        alert("Tipo de transporte invalido. Por favor digite el numero correspondiente al tipo de transporte");
+        tarifaBase = null;
+    }
+
+    // Determinar descuento según la condición especial
+    if (tarifaBase !== null) {
+      switch (condicion) {
+        case 1:
+          descuento = 0.30;
+          break;
+        case 2:
+          descuento = 0.50;
+          break;
+        case 3:
+          descuento = 0;
+          break;
+        default:
+          alert("Condición especial inválida. Por favor digite el numero correspondiente al tipo de Condición especial");
+          descuento = null;
+      }
+    }
+
+    // Calcular y mostrar resultado
+    if (tarifaBase !== null && descuento !== null) {
+      let valorFinal = tarifaBase - (tarifaBase * descuento);
+      document.write(`
+        <div class="respuesta">
+          Hola <strong>${nombre}</strong>, el valor final de tu pasaje es:<br>
+          <strong>$${valorFinal.toFixed(0)}</strong>
+        </div>
+      `);
+    } else {
+      document.write("<p>No se pudo calcular el valor del pasaje por datos inválidos.</p>");
+    }
+
+
+  </script>
+
+</body>
+</html>
+
